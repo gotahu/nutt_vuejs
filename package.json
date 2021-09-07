@@ -15,7 +15,6 @@
     "@popperjs/core": "^2.9.3",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.0-beta3",
-    "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
     "firebase": "^9.0.1",
     "vue": "^2.6.11",
