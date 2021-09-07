@@ -1,0 +1,8 @@
+{
+  "name": "Nagoya University TimeTable",
+  "short_name": "NUTT",
+  "theme_color": "#006e4f",
+  "background_color": "#006e4f",
+  "display": "standalone",
+  "start_url": "https://hinyari.net/other/nutt/"
+}
