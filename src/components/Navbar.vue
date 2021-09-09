@@ -2,7 +2,9 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-success" role="navigation" aria-label="main navigation">
       <div class="container-fluid">
-        <a class="navbar-brand text-white nutt-title h3 m-0" href="/other/nutt">NUTT</a>
+        <router-link to="/">
+          <a class="navbar-brand text-white nutt-title h3 m-0">NUTT</a>
+        </router-link>
       </div>
     </nav>
     <div class="bg-success shadow mb-3">
@@ -15,6 +17,11 @@
         <li class="nav-item">
           <router-link to="/syllabus" class="nav-link text-white">
             講座検索
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link to="/institution" class="nav-link text-white">
+            施設情報
           </router-link>
         </li>
       </ul>

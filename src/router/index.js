@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Top from '@/pages/top'
 
 import Syllabus from '@/pages/syllabus'
+import Institution from '@/pages/institution'
 
 Vue.use(Router)
 
@@ -23,6 +24,12 @@ export default new Router({
             component: Top,
             meta: { title: 'Top' }
         },
+        {
+            path: '/institution',
+            name: 'institution',
+            component: Institution,
+            meta: { title: 'Institution' }
+        }
 
     ]
 })

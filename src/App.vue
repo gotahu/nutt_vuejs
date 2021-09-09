@@ -3,10 +3,10 @@
     <header>
       <Navbar/>
     </header>
-    <main>
-      <div>
+    <main class="mb-5">
+      <transition mode="out-in">
         <router-view/>
-      </div>
+      </transition>
     </main>
     <footer>
       <Footer/>
@@ -27,8 +27,7 @@ export default {
   methods: {
     createTitleDesc: function(routeInstance) {
       if (routeInstance.meta.title) {
-        const setTitle = routeInstance.meta.title + ' | NUTT'
-        document.title = setTitle
+        document.title = routeInstance.meta.title + ' | NUTT'
       } else {
         document.title = 'NUTT'
       }
@@ -55,4 +54,13 @@ body {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.v-enter-active, .v-leave-active {
+  transition: opacity .5s;
+}
+
+.v-enter, .v-leave-to {
+  opacity: 0;
+}
+
 </style>

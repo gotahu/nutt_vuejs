@@ -1,14 +1,14 @@
 <template>
   <div class="container-fluid p-3">
-    <p class="d-none-md text-white bg-dark">スマートフォンでは表示が崩れる場合があります．ご了承ください．</p>
-    <div class="row mb-2">
+    <p class="d-sm-none text-white bg-dark">スマートフォンでは表示が崩れる場合があります．ご了承ください．</p>
+    <div class="row mb-3">
         <label class="col-sm-2 col-form-label">キーワード</label>
         <div class="col-sm-10">
           <input type="text" placeholder="時間割コード・講座名・講師名を入力" v-model="keyword"
                  @input="sendSearchData" class="form-control">
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-3">
       <label class="col-sm-2 col-form-label align-self-center">学部・学科</label>
       <div class="col-sm-10">
         <div v-for="(dep, i) in departmentsInfo" class="p-1 d-inline-flex" :key="i">
