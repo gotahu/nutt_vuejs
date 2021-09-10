@@ -7,28 +7,40 @@
     <div class="container-fluid">
       <p class="small text-black-50 text-center">講義をクリックまたはタップすると，シラバスを閲覧できます．</p>
 
-      <div class="row bg-success fw-bold text-white align-items-center text-md-center py-2">
-        <div class="d-none d-md-block col-md-2">コード<br>科目</div>
-        <div class="col-10 col-md-4">講座名</div>
-        <div class="col-2 col-md-1">時限<br><div class="d-none d-md-block">単位数</div></div>
+      <div class="row bg-success text-white align-items-center text-md-center py-2">
+        <div class="d-none d-md-block col-md-1">コード</div>
+        <div class="d-none d-md-block col-md-1 p-0">科目名</div>
+        <div class="col-10 col-md-3">講座名</div>
+        <div class="col-2 col-md-1 p-0">時限</div>
+        <div class="d-none d-md-block col-md-1 p-0">単位</div>
         <div class="col col-md-2">講師名</div>
-        <div class="col-2 col-md-1">教室</div>
-        <div class="col col-md-2">開講形式</div>
+        <div class="col col-md-1">講義室</div>
+        <div class="col-2 col-md-2 p-0 p-md-2">授業形態</div>
       </div>
 
-      <div class="row border-bottom align-items-center position-relative clickable" v-for="lecture in sortedList" :key="lecture.code">
-        <div class="d-none d-md-block col-md-2">{{ lecture.code }}<br>{{ lecture.subject }}</div>
-        <div class="col-10 col-md-4">{{ lecture.title_jp }}<br>{{ lecture.theme }}</div>
-        <div class="col-2 col-md-1">
-          <span v-for="t in lecture.time" :key="t">{{ t }}</span><br><small class="d-none d-md-block">{{ lecture.credit }} 単位</small>
-        </div>
-        <div class="col col-md-2">{{ lecture.teacher_jp }}</div>
-        <div class="col-2 col-md-1">未定</div>
-        <div class="col col-md-2">{{ lecture.type }}</div>
-        <a data-bs-toggle="modal" data-bs-target="#syllabusModal" class="stretched-link" @click="openSyllabusModal(lecture.code)">
-        </a>
+
+      <div class="list-group list-group-flush">
+        <template v-for="lecture in sortedList">
+          <a class="list-group-item list-group-item-action p-1 p-md-2" :key="lecture.code"
+             @click="openSyllabusModal(lecture.code)"
+             data-bs-toggle="modal" data-bs-target="#syllabusModal"
+          >
+            <div class="row align-items-center">
+              <div class="d-none d-md-block col-md-1">{{ lecture.code }}</div>
+              <div class="d-none d-md-block col-md-1 small p-0">{{ abbrName(lecture.subject) }}</div>
+              <div class="col-10 col-md-3">{{ abbrName(lecture.title_jp) }}</div>
+              <div class="col-2 col-md-1 small p-0"><p class="m-0" v-for="t in lecture.time" :key="t">{{t}}</p></div>
+              <div class="d-none d-md-block col-md-1 small p-0">{{ lecture.credit }} 単位</div>
+              <div class="col col-md-2">{{ lecture.teacher_jp }}</div>
+              <div class="col col-md-1">未定</div>
+              <div class="col-2 col-md-2 small p-0 p-md-2">{{ lecture.type }}</div>
+            </div>
+          </a>
+        </template>
       </div>
+
     </div>
+
     <Modal :code="this.code"/>
   </div>
 </template>
@@ -46,7 +58,7 @@ export default {
       keyword: '',
       department: '',
       subject: '',
-      sort: 'asc'
+      sort: 'asc',
     }
   },
   components: {
@@ -85,7 +97,10 @@ export default {
       this.department = array[1]
       this.subject = array[2]
     },
-
+    abbrName: function(name) {
+      return name.replace("健康・スポーツ科学", "健スポ").replace("（実習）", "実習")
+        .replace("科目", "").replace("基礎セミナー", "基セミ")
+    }
   },
   computed: {
     filteredList: function() {
