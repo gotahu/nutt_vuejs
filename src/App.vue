@@ -3,9 +3,9 @@
     <header>
       <Navbar/>
     </header>
-    <main class="mb-5">
+    <main>
       <transition mode="out-in">
-        <router-view/>
+        <router-view class="mb-5" />
       </transition>
     </main>
     <footer>
