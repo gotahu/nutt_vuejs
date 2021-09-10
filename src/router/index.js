@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Top from '@/pages/Top'
+import Top from '@/pages/top'
 
-import Syllabus from '@/pages/Syllabus'
-import Institution from '@/pages/Institution'
+import Syllabus from '@/pages/syllabus'
+import Institution from '@/pages/institution'
 
 Vue.use(Router)
 
