@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid p-3 p-md-4">
+  <div class="container-fluid p-3 p-md-5">
     <div class="row mb-3">
         <label class="col-sm-2 col-form-label text-center">キーワード</label>
         <div class="col-sm-10">

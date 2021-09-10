@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container  p-3">
     <h2>各施設の営業時間</h2>
     <div class="d-inline-flex w-100 justify-content-between align-items-center py-4 bg-white sticky-top">
       <button class="btn btn-success" @click="subDay" :disabled="isFirstDayOfMonth">前日</button>
@@ -10,7 +10,7 @@
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-2 g-md-4">
       <div class="col" v-for="inst in institutions" :key="inst.name">
         <div class="card">
-          <div class="card-body">
+          <div class="card-body text-center">
             <h5 class="card-title">{{ inst.name }}</h5>
             <p class="card-text">{{ inst.definitions[inst.status[date.get('date') - 1]] }}</p>
           </div>

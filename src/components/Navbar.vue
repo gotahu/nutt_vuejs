@@ -3,29 +3,27 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-success" role="navigation" aria-label="main navigation">
       <div class="container-fluid">
         <router-link to="/" class="text-decoration-none">
-          <span class="nutt-title h4 text-white">NUTT</span>
+          <span class="nutt-title h4 text-white p-2">NUTT</span>
         </router-link>
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <router-link to="/" class="nav-link text-white">
+              トップページ
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/syllabus" class="nav-link text-white">
+              講座検索
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/institution" class="nav-link text-white">
+              施設情報
+            </router-link>
+          </li>
+        </ul>
       </div>
     </nav>
-    <div class="bg-success shadow mb-3">
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <router-link to="/" class="nav-link text-white">
-            トップページ
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/syllabus" class="nav-link text-white">
-            講座検索
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link to="/institution" class="nav-link text-white">
-            施設情報
-          </router-link>
-        </li>
-      </ul>
-    </div>
   </div>
 </template>
 

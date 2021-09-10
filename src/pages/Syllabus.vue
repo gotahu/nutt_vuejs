@@ -7,6 +7,7 @@
     <div class="container-fluid">
       <p class="small text-black-50 text-center">講義をクリックまたはタップすると，シラバスを閲覧できます．</p>
 
+      {{ /* タイトル行 */ }}
       <div class="row bg-success text-white align-items-center text-md-center py-2">
         <div class="d-none d-md-block col-md-1">コード</div>
         <div class="d-none d-md-block col-md-1 p-0">科目名</div>
@@ -14,26 +15,26 @@
         <div class="col-2 col-md-1 p-0">時限</div>
         <div class="d-none d-md-block col-md-1 p-0">単位</div>
         <div class="col col-md-2">講師名</div>
-        <div class="col col-md-1">講義室</div>
-        <div class="col-2 col-md-2 p-0 p-md-2">授業形態</div>
+        <div class="col col-md-2">講義室</div>
+        <div class="col-2 col-md-1 p-0 p-md-2">授業形態</div>
       </div>
 
-
+      {{ /* リスト部分 */ }}
       <div class="list-group list-group-flush">
         <template v-for="lecture in sortedList">
           <a class="list-group-item list-group-item-action p-1 p-md-2" :key="lecture.code"
              @click="openSyllabusModal(lecture.code)"
              data-bs-toggle="modal" data-bs-target="#syllabusModal"
           >
-            <div class="row align-items-center">
+            <div class="row align-items-center gx-1 gx-lg-3">
               <div class="d-none d-md-block col-md-1">{{ lecture.code }}</div>
               <div class="d-none d-md-block col-md-1 small p-0">{{ abbrName(lecture.subject) }}</div>
               <div class="col-10 col-md-3">{{ abbrName(lecture.title_jp) }}</div>
               <div class="col-2 col-md-1 small p-0"><p class="m-0" v-for="t in lecture.time" :key="t">{{t}}</p></div>
               <div class="d-none d-md-block col-md-1 small p-0">{{ lecture.credit }} 単位</div>
               <div class="col col-md-2">{{ lecture.teacher_jp }}</div>
-              <div class="col col-md-1">未定</div>
-              <div class="col-2 col-md-2 small p-0 p-md-2">{{ lecture.type }}</div>
+              <div class="col col-md-2">未定</div>
+              <div class="col-2 col-md-1 p-0"><LectureType :type="lecture.type" /></div>
             </div>
           </a>
         </template>
@@ -48,6 +49,7 @@
 <script>
 import Search from "@/components/Search";
 import Modal from "@/components/Modal";
+import LectureType from "@/components/LectureType";
 
 export default {
   name: "syllabus",
@@ -62,6 +64,7 @@ export default {
     }
   },
   components: {
+    LectureType,
     Search,
     Modal
   },
