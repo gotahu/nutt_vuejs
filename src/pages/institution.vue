@@ -13,7 +13,6 @@
           <div class="card-body">
             <h5 class="card-title">{{ inst.name }}</h5>
             <p class="card-text">{{ inst.definitions[inst.status[date.get('date') - 1]] }}</p>
-            <!-- TODO filter したリストをもってくる -->
           </div>
         </div>
       </div>

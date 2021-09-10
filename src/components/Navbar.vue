@@ -2,8 +2,8 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-success" role="navigation" aria-label="main navigation">
       <div class="container-fluid">
-        <router-link to="/">
-          <a class="navbar-brand text-white nutt-title h3 m-0">NUTT</a>
+        <router-link to="/" class="text-decoration-none">
+          <span class="nutt-title h4 text-white">NUTT</span>
         </router-link>
       </div>
     </nav>
@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@500&display=swap');
   .nutt-title {
     font-family: 'Lexend', sans-serif;

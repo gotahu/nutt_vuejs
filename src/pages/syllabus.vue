@@ -1,28 +1,35 @@
 <template>
   <div>
+    <p class="d-sm-none text-white bg-dark text-center p-1 mb-0">スマートフォンでは表示が崩れる場合があります．ご了承ください．</p>
+
     <Search v-on:changeOnSearch="receiveSearchData" />
+
     <div class="container-fluid">
-      <table class="table table-bordered">
-        <tr class="table-success bg-success text-white">
-          <th style="width: 10%">コード</th>
-          <th style="width: 50%">講座名</th>
-          <th style="width: 5%">時限</th>
-          <th style="width: 5%">単位</th>
-          <th style="width: 10%">講師名</th>
-          <th style="width: 10%">教室</th>
-          <th style="width: 10%">シラバス</th>
-        </tr>
-        <tr class="text-start" v-for="lecture in sortedList" v-bind:key="lecture.code">
-          <td>{{ lecture.code }}<br>{{ lecture.subject }}</td>
-          <td>{{ lecture.title_jp }}<br>{{ lecture.theme }}</td>
-          <td><span v-for="t in lecture.time" :key=t>{{ t }}</span></td>
-          <td>{{ lecture.credit }}</td>
-          <td>{{ lecture.teacher_jp }}</td>
-          <td><small>不明</small></td>
-          <td class="text-center"><a data-bs-toggle="modal" data-bs-target="#syllabusModal"
-                                     @click="openSyllabusModal(lecture.code)"><font-awesome-icon icon="angle-right" size="lg"/></a></td>
-        </tr>
-      </table>
+      <p class="small text-black-50 text-center">講義をクリックまたはタップすると，シラバスを閲覧できます．</p>
+
+      <div class="row bg-success fw-bold text-white align-items-center text-md-center">
+        <div class="d-none d-md-block col-md-2">コード<br>科目</div>
+        <div class="col-10 col-md-4">講座名</div>
+        <div class="col-2 col-md-1">時限<br><div class="d-none d-md-block">単位数</div></div>
+        <div class="col col-md-2">講師名</div>
+        <div class="col-2 col-md-1">教室</div>
+        <div class="col col-md-2">開講形式</div>
+      </div>
+      <div class="row border-bottom align-items-center position-relative clickable"
+           v-for="lecture in sortedList" :key="lecture.code">
+        <div class="d-none d-md-block col-md-2">
+          {{ lecture.code }}<br>{{ lecture.subject }}
+        </div>
+        <div class="col-10 col-md-4">{{ lecture.title_jp }}<br>{{ lecture.theme }}</div>
+        <div class="col-2 col-md-1">
+          <span v-for="t in lecture.time" :key="t">{{ t }}</span><br><small class="d-none d-md-block">{{ lecture.credit }} 単位</small>
+        </div>
+        <div class="col col-md-2">{{ lecture.teacher_jp }}</div>
+        <div class="col-2 col-md-1">未定</div>
+        <div class="col col-md-2">{{ lecture.type }}</div>
+        <a data-bs-toggle="modal" data-bs-target="#syllabusModal" class="stretched-link" @click="openSyllabusModal(lecture.code)">
+        </a>
+      </div>
     </div>
     <Modal :code="this.code" />
   </div>
@@ -107,6 +114,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+  .clickable {
+    cursor: pointer;
+  }
 </style>
