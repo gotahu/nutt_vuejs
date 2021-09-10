@@ -2,8 +2,9 @@
 
 // みんな大好き NU グリーン
 $success: #006e4f;
-$primary: #13586C;
-$danger: #F73E43;
+//$primary: #13586C;
+//$danger: #F73E43;
+
 
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
@@ -37,9 +38,10 @@ $danger: #F73E43;
   @extend .py-1;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 body {
-  font-family: 'M PLUS Rounded 1c', sans-serif;
+  //font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 html{
