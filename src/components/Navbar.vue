@@ -2,10 +2,10 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-success" role="navigation" aria-label="main navigation">
       <div class="container-fluid">
-        <router-link to="/" class="text-decoration-none">
+        <router-link to="/" class="text-decoration-none order-1 me-auto">
           <span class="nutt-title h4 text-white p-2">NUTT</span>
         </router-link>
-        <ul class="nav nav-pills">
+        <ul class="nav nav-pills order-3 order-md-2 justify-content-center mt-1 mt-md-0">
           <li class="nav-item">
             <router-link to="/" class="nav-link text-white">
               トップページ
@@ -22,6 +22,9 @@
             </router-link>
           </li>
         </ul>
+        <router-link to="/login" class="order-2 order-md-3">
+          <button class="btn btn-light">ログイン</button>
+        </router-link>
       </div>
     </nav>
   </div>

@@ -1,6 +1,8 @@
 <template>
-  <span v-if="isBadged" :class="badgeClass">{{ label }}</span>
-  <span v-else class="small">{{ type }}</span>
+  <div class="d-block">
+    <span v-if="isBadged" :class="badgeClass">{{ label }}</span>
+    <span v-else class="small">{{ type }}</span>
+  </div>
 </template>
 
 <script>

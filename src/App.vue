@@ -56,7 +56,7 @@ body {
 }
 
 .v-enter-active, .v-leave-active {
-  transition: opacity .5s;
+  transition: opacity .25s;
 }
 
 .v-enter, .v-leave-to {

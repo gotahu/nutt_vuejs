@@ -5,7 +5,7 @@
     <Search @changeOnSearch="receiveSearchData" />
 
     <div class="container-fluid">
-      <p class="small text-black-50 text-center">講義をクリックまたはタップすると，シラバスを閲覧できます．</p>
+      <p class="text-black-50 text-center">講義をクリックまたはタップすると，シラバスを閲覧できます．</p>
 
       {{ /* タイトル行 */ }}
       <div class="row bg-success text-white align-items-center text-md-center py-2">
@@ -25,21 +25,21 @@
           <a class="list-group-item list-group-item-action p-1 p-md-2" :key="lecture.code"
              @click="openSyllabusModal(lecture.code)"
              data-bs-toggle="modal" data-bs-target="#syllabusModal"
+             :class="favouriteLecturesCode.includes(lecture.code) ? 'bg-warning bg-opacity-25' : ''"
           >
             <div class="row align-items-center gx-1 gx-lg-3">
               <div class="d-none d-md-block col-md-1">{{ lecture.code }}</div>
               <div class="d-none d-md-block col-md-1 small p-0">{{ abbrName(lecture.subject) }}</div>
               <div class="col-10 col-md-3">{{ abbrName(lecture.title_jp) }}</div>
-              <div class="col-2 col-md-1 small p-0"><p class="m-0" v-for="t in lecture.time" :key="t">{{t}}</p></div>
+              <div class="col-2 col-md-1 p-0"><p class="m-0" v-for="t in lecture.time" :key="t">{{t}}</p></div>
               <div class="d-none d-md-block col-md-1 small p-0">{{ lecture.credit }} 単位</div>
               <div class="col col-md-2">{{ lecture.teacher_jp }}</div>
               <div class="col col-md-2">未定</div>
-              <div class="col-2 col-md-1 p-0"><LectureType :type="lecture.type" /></div>
+              <div class="col-3 col-md-1 p-0"><LectureType :type="lecture.type" /></div>
             </div>
           </a>
         </template>
       </div>
-
     </div>
 
     <Modal :code="this.code"/>
@@ -51,8 +51,10 @@ import Search from "@/components/Search";
 import Modal from "@/components/Modal";
 import LectureType from "@/components/LectureType";
 
+import store from "@/store"
+
 export default {
-  name: "syllabus",
+  name: "Syllabus",
   data() {
     return {
       code: '',
@@ -61,6 +63,7 @@ export default {
       department: '',
       subject: '',
       sort: 'asc',
+      favouriteLecturesCode: store.favouriteLecturesCode
     }
   },
   components: {
@@ -103,11 +106,14 @@ export default {
     abbrName: function(name) {
       return name.replace("健康・スポーツ科学", "健スポ").replace("（実習）", "実習")
         .replace("科目", "").replace("基礎セミナー", "基セミ")
+    },
+    bgWarning: function(code) {
+      return store.favouriteLecturesCode.indexOf(code) ? "" : "bg-warning"
     }
   },
   computed: {
     filteredList: function() {
-      return this.lectures.filter(function(item) {
+      return this.lectures.filter(item => {
         return (item.title_jp.indexOf(this.keyword) > -1 || item.code.indexOf(this.keyword) > -1
                 || item.teacher_jp.indexOf(this.keyword) > -1 || item.subject.indexOf(this.keyword) > -1)
             && (item.departments[this.department] === "○" || this.department === 20)
@@ -124,7 +130,7 @@ export default {
       } else {
         return copy
       }
-    }
+    },
   },
 
 }
