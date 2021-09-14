@@ -5,6 +5,9 @@ $success: #006e4f;
 //$primary: #13586C;
 //$danger: #F73E43;
 
+$form-check-input-checked-bg-color: $success;
+$form-check-input-checked-border-color: $success;
+
 
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
