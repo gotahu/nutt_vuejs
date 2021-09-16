@@ -7,6 +7,7 @@ import Institution from '@/pages/Institution'
 
 Vue.use(Router)
 
+
 export default new Router({
     mode: 'history',
     relative: true,
