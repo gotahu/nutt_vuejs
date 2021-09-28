@@ -31,7 +31,7 @@ export default {
       } else {
         document.title = 'NUTT'
       }
-    }
+    },
   },
   mounted: function() {
     const routeInstance = this.$route

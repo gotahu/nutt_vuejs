@@ -34,7 +34,7 @@
               <div class="col-2 col-md-1 p-0"><p class="m-0" v-for="t in lecture.time" :key="t">{{t}}</p></div>
               <div class="d-none d-md-block col-md-1 small p-0">{{ lecture.credit }} 単位</div>
               <div class="col col-md-2">{{ lecture.teacher_jp }}</div>
-              <div class="col col-md-2">未定</div>
+              <div class="col col-md-2">{{ lecture.room }}</div>
               <div class="col-3 col-md-1 p-0"><LectureType :type="lecture.type" /></div>
             </div>
           </a>
@@ -71,9 +71,9 @@ export default {
     Search,
     Modal
   },
-  created () {
+  created() {
     this.axios
-        .get('https://hinyari.net/other/nutt/json/2021-autumn-syllabus.json')
+        .get('https://hinyari.net/other/nutt/api/syllabus.php')
         .then(response => (this.lectures = response.data))
   },
   methods: {
