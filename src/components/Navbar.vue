@@ -13,7 +13,7 @@
           </li>
           <li class="nav-item">
             <router-link to="/syllabus" class="nav-link text-white">
-              講座検索
+              シラバス
             </router-link>
           </li>
           <li class="nav-item">
@@ -22,9 +22,6 @@
             </router-link>
           </li>
         </ul>
-        <router-link to="/login" class="order-2 order-md-3">
-          <button class="btn btn-light">ログイン</button>
-        </router-link>
       </div>
     </nav>
   </div>

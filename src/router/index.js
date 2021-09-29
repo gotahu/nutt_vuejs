@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Top from '@/pages/Top'
 
+import Top from '@/pages/Top'
 import Syllabus from '@/pages/Syllabus'
 import Institution from '@/pages/Institution'
 

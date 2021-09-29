@@ -82,7 +82,7 @@ export default {
       // 時間割に表示する最低限の情報を連想配列にしてぶちこむ
       // 部屋の情報は未発表 //TODO
       const lecture = {'code': this.code, 'subject': syllabus.subject, 'title': syllabus.title_jp,
-        'teacher': syllabus.teacher_jp.replace('○', ''), 'type': syllabus.type
+        'teacher': syllabus.teacher_jp.replace('○', ''), 'type': syllabus.type, 'room': syllabus.room
       }
       // もし Fav されたら，状態管理リストにぶちこむ
       if (this.isRegistered) {

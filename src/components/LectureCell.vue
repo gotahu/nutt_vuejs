@@ -2,12 +2,13 @@
   <div>
     <template v-if="favouriteLectures[dayAndPeriod] !== undefined">
       <div v-for="lecture in favouriteLectures[dayAndPeriod]" :key="lecture.code"
-        class="d-flex flex-column border"
+        class="d-flex flex-column justify-content-around"
       >
         <div class="tiny">{{ lecture.code }}</div>
-        <div class="small py-2">{{ abbrName(lecture.title) }}</div>
+        <div class="tiny fw-bold py-1">{{ abbrName(lecture.title) }}</div>
         <LectureType :type="lecture.type" />
-        <div class="tiny mt-auto pt-1">{{ lecture.teacher }}</div>
+        <div class="small">{{ lecture.room }}</div>
+        <div class="tiny mt-auto">{{ lecture.teacher }}</div>
       </div>
     </template>
   </div>
@@ -33,7 +34,7 @@ export default {
   methods: {
     abbrName: function(name) {
       return name.replace("健康・スポーツ科学", "健スポ").replace("（実習）", "実習")
-          .replace("科目", "").replace("基礎セミナー", "基セミ")
+          .replace("科目", "").replace("基礎セミナー", "基セミ").replace("（", "(").replace("）", ")")
     }
   }
 

@@ -73,7 +73,7 @@ export default {
   },
   created() {
     this.axios
-        .get('https://hinyari.net/other/nutt/api/syllabus.php')
+        .get('https://hinyari.net/other/nutt/api/syllabus.php?')
         .then(response => (this.lectures = response.data))
   },
   methods: {
