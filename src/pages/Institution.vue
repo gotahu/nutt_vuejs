@@ -7,14 +7,14 @@
       <button class="btn btn-success" @click="addDay" :disabled="isEndDayOfMonth">翌日</button>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-2 g-md-4">
-      <div class="col" v-for="inst in institutions" :key="inst.name">
-        <div class="card">
-          <div class="card-body text-center">
-            <h5 class="card-title">{{ inst.name }}</h5>
-            <p class="card-text">{{ inst.definitions[inst.status[date.get('date') - 1]] }}</p>
-          </div>
-        </div>
+    <div id="table-institution">
+      <div class="row border-bottom text-center">
+        <div class="col-5">名称</div>
+        <div class="col">営業時間</div>
+      </div>
+      <div class="row border-bottom" v-for="institution in institutions" :key="institutions.indexOf(institution)">
+        <div class="col-5">{{ institution.name }}</div>
+        <div class="col">{{ institution.definitions[institution.status[date.get('date') - 1]] }}</div>
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@ export default {
   },
   created() {
     this.axios
-      .get("https://hinyari.net/other/nutt/json/202109-institutions.json")
+      .get("https://hinyari.net/other/nutt/json/202110-institutions.json")
       .then(response => (this.institutions = response.data))
   },
   computed: {

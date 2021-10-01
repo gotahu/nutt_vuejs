@@ -3,6 +3,14 @@
     <div class="row gy-3">
       <div class="col-12 col-md-6">
         <div class="card">
+          <div class="card-header">アクセスポイント</div>
+          <div class="card-body text-center ">
+            <Accesspoint />
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="card">
           <div class="card-header">時間割</div>
           <div class="card-body">
             <div id="timeschedule" class="text-center">
@@ -20,37 +28,6 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-6">
-        <div class="card">
-          <div class="card-header">アクセスポイント</div>
-          <div class="card-body text-center ">
-            <nav class="nav nav-pills nav-fill">
-              <button class="nav-link" :class="apDayOfWeek === dayOfWeek ? 'active' : ''"
-                      v-for="dayOfWeek in ['月','火','水','木','金']" :key="dayOfWeek"
-                      @click="updateAPDayOfWeek(dayOfWeek)"
-              >{{ dayOfWeek }}</button>
-            </nav>
-            <div class="row gx-0">
-              <div class="col-2"></div>
-              <div class="col">1</div>
-              <div class="col">2</div>
-              <div class="col">3</div>
-              <div class="col">4</div>
-              <div class="col">5</div>
-            </div>
-            <div class="row gx-0" v-for="room in rooms" :key="room">
-              <div class="col-2 border-bottom">{{ room }}</div>
-              <div class="col border-bottom border-end" v-for="period in [1,2,3,4,5]" :key="period">
-                <template v-if="accesspoints[room] !== undefined">
-                  <template v-if="accesspoints[room][apDayOfWeek + period] !== undefined">
-                    <LectureType :type="accesspoints[room][apDayOfWeek + period]['type']" :isAP="true" />
-                  </template>
-                </template>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -61,7 +38,7 @@ import moment from 'moment'
 moment.locale('ja')
 
 import LectureCell from '@/components/LectureCell'
-import LectureType from "@/components/LectureType";
+import Accesspoint from "@/components/Accesspoint";
 
 export default {
   name: 'Top',
@@ -78,7 +55,7 @@ export default {
     }
   },
   components: {
-    LectureType,
+    Accesspoint,
     LectureCell,
   },
   methods: {
