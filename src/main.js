@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueGtag from 'vue-gtag'
 
 import "bootstrap"
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -17,6 +18,10 @@ library.add(faAngleRight)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(VueAxios, axios)
+Vue.use(VueGtag, {
+    config: { id: "G-E0221B3Z54"}
+});
+
 
 Vue.config.productionTip = false
 

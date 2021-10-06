@@ -7,6 +7,9 @@
       >{{ dayOfWeek }}</button>
     </nav>
     <div id="usage-accesspoint" class="mb-2">
+      <div class="row gx-0">
+        <div class="col border border-secondary">空室</div>
+      </div>
       <div class="row gx-0 ">
         <div class="col bg-danger bg-opacity-50">対面</div>
         <div class="col bg-warning bg-opacity-50">対面+遠隔</div>
@@ -48,7 +51,10 @@
               <div class="col border-bottom border-end" v-for="period in [1,2,3,4,5]" :key="period">
                 <template v-if="accesspoints[room] !== undefined">
                   <template v-if="accesspoints[room][apDayOfWeek + period] !== undefined">
-                    <div :class="getColorOfType(accesspoints[room][apDayOfWeek + period].type)" class="bg-opacity-25">-</div>
+                    <div :class="getColorOfType(accesspoints[room][apDayOfWeek + period].type)" class="bg-opacity-25 text-white text-opacity-25">-</div>
+                  </template>
+                  <template v-else>
+                    <div class="text-black text-opacity-50">空</div>
                   </template>
                 </template>
               </div>

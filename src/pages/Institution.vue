@@ -1,5 +1,5 @@
 <template>
-  <div class="container  p-3">
+  <div class="container">
     <h2>各施設の営業時間</h2>
     <div class="d-inline-flex w-100 justify-content-between align-items-center py-4 bg-white sticky-top">
       <button class="btn btn-success" @click="subDay" :disabled="isFirstDayOfMonth">前日</button>

@@ -28,10 +28,10 @@ export default {
       this.colorClass += "bg-primary"
       this.label = "遠隔"
     } else if (type === "遠隔授業（一部を対面授業）") {
-      this.colorClass += "bg-info"
+      this.colorClass += "bg-info text-dark bg-opacity-75"
       this.label = "遠隔+対面"
     } else if (type === "対面授業（一部を遠隔授業）") {
-      this.colorClass += "bg-warning"
+      this.colorClass += "bg-warning text-dark"
       this.label = "対面+遠隔"
     } else if (type === "対面授業") {
       this.colorClass += "bg-danger"
@@ -40,8 +40,8 @@ export default {
       this.colorClass += "bg-success"
       this.label = "NUCT参照"
     } else if (type === "対面授業（同時に遠隔授業として配信）") {
-      this.colorClass += "bg-warning"
-      this.label = "対面+遠隔(配信)"
+      this.colorClass += "bg-warning text-dark bg-opacity-50"
+      this.label = "対面+配信"
     } else {
       this.isBadged = false
     }

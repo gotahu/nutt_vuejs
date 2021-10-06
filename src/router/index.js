@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Top from '@/pages/Top'
 import Syllabus from '@/pages/Syllabus'
 import Institution from '@/pages/Institution'
+import Contact from '@/pages/Contact'
 
 Vue.use(Router)
 
@@ -30,6 +31,12 @@ export default new Router({
             name: 'institution',
             component: Institution,
             meta: { title: 'Institution' }
+        },
+        {
+            path: '/contact',
+            name: 'contact',
+            component: Contact,
+            meta: { title: 'Contact' }
         }
 
     ]
