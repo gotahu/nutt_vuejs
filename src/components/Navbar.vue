@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-3">
     <nav class="navbar navbar-expand-lg navbar-light bg-success" role="navigation" aria-label="main navigation">
       <div class="container-fluid">
         <router-link to="/" class="text-decoration-none order-1 me-auto">
@@ -12,13 +12,13 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/syllabus" class="nav-link text-white">
-              シラバス
+            <router-link to="/institution" class="nav-link text-white">
+              施設情報
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/institution" class="nav-link text-white">
-              施設情報
+            <router-link to="/contact" class="nav-link text-white">
+              問い合わせ
             </router-link>
           </li>
         </ul>
