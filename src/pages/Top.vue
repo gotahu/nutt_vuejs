@@ -1,9 +1,6 @@
 <template>
   <div class="container-fluid px-3">
-    <div class="text-center text-white">
-      <p class="bg-dark p-1 mt-3">10/20 講義室情報を更新しました</p>
-      <p class="bg-info p-1 bg-opacity-75">授業形態で NUCT 参照となっているものや，その他情報に誤りがある場合は，右上の【問い合わせ】から教えていただけると助かります．</p>
-    </div>
+    <TopHeader />
 
     <div class="row gy-3">
       <div class="col-12 col-lg-4">
@@ -32,20 +29,18 @@ moment.locale('ja')
 
 import Accesspoint from "@/components/Accesspoint";
 import Syllabus from "@/pages/Syllabus";
+import TopHeader from "@/components/TopHeader";
 
 export default {
   name: 'Top',
   components: {
+    TopHeader,
     Syllabus,
     Accesspoint,
   },
   methods: {
   },
   created() {
-    this.axios
-        .get('https://hinyari.net/other/nutt/api/accesspoint.php')
-        .then(response => (this.accesspoints = response.data))
-
     this.apDayOfWeek = new moment().format("ddd")
   }
 }

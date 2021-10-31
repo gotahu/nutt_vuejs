@@ -9,6 +9,7 @@
     <div id="usage-accesspoint" class="mb-2">
       <div class="row gx-0">
         <div class="col border border-secondary">空室</div>
+        <div class="col bg-black bg-opacity-50">施錠</div>
       </div>
       <div class="row gx-0 ">
         <div class="col bg-danger bg-opacity-50">対面</div>
@@ -54,7 +55,8 @@
                     <div :class="getColorOfType(accesspoints[room][apDayOfWeek + period].type)" class="bg-opacity-25 text-white text-opacity-25">-</div>
                   </template>
                   <template v-else>
-                    <div class="text-black text-opacity-50">空</div>
+                    <span v-if="accesspoints[room]['lastperiods'][apDayOfWeek] > period" class="text-black-50">空</span>
+                    <div v-else class="bg-black bg-opacity-50"><span class="small text-black text-opacity-50">×</span></div>
                   </template>
                 </template>
               </div>
@@ -62,6 +64,10 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="text-start mt-2">
+      <span>C13，C14，C15，C23，C25，C33，C35，S10，S11，S20，S21，S30，S1X，S2X，S2Y，サブラボA，CALL1-4 は常時開設されており，授業で使用していない時間帯に使用可能です。</span>
+      <span>上記以外の講義室は，その日最終の授業が終わるまでは開錠されています。</span>
     </div>
   </div>
 </template>
