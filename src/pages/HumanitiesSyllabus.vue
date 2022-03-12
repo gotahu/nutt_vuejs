@@ -8,13 +8,13 @@
       <p class="text-black-50 text-center">講義をクリックまたはタップすると，シラバスを閲覧<span class="fw-bold">できません</span>．もうちょっとまってください</p>
 
       {{ /* タイトル行 */ }}
-      <div class="row bg-success text-white align-items-center text-md-center py-2">
+      <div class="row bg-success text-white align-items-center text-center py-2">
         <div class="d-none d-md-block col-md-1">コード</div>
         <div class="d-none d-md-block col-md-1 p-0">専攻</div>
         <div class="col col-md-3">講座名</div>
         <div class="col col-md-1 p-0">時限</div>
         <div class="d-none d-md-block col-md-1 p-0">単位</div>
-        <div class="col col-md-1">学年</div>
+        <div class="col-1 col-md-1">学年</div>
         <div class="col col-md-2">講師名</div>
       </div>
 
@@ -32,7 +32,7 @@
               <div class="col col-md-3">{{ abbrName(lecture.title_jp) }}</div>
               <div class="col col-md-1 p-0">{{ abbrName(lecture.time) }}</div>
               <div class="d-none d-md-block col-md-1 small p-0">{{ lecture.credit }} 単位</div>
-              <div class="col col-md-1">{{ lecture.year }}</div>
+              <div class="col-1 text-center text-md-start col-md-1">{{ lecture.year }}</div>
               <div class="col col-md-2">{{ abbrName(lecture.teacher_jp) }}</div>
             </div>
           </a>
