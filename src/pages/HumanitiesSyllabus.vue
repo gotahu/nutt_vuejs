@@ -14,6 +14,7 @@
         <div class="col col-md-3">講座名</div>
         <div class="col col-md-1 p-0">時限</div>
         <div class="d-none d-md-block col-md-1 p-0">単位</div>
+        <div class="col col-md-1">学年</div>
         <div class="col col-md-2">講師名</div>
       </div>
 
@@ -31,7 +32,8 @@
               <div class="col col-md-3">{{ abbrName(lecture.title_jp) }}</div>
               <div class="col col-md-1 p-0">{{ abbrName(lecture.time) }}</div>
               <div class="d-none d-md-block col-md-1 small p-0">{{ lecture.credit }} 単位</div>
-              <div class="col col-md-2">{{ lecture.teacher_jp }}</div>
+              <div class="col col-md-1">{{ lecture.year }}</div>
+              <div class="col col-md-2">{{ abbrName(lecture.teacher_jp) }}</div>
             </div>
           </a>
         </template>
@@ -100,6 +102,8 @@ export default {
     abbrName: function(name) {
       return name.replace("健康・スポーツ科学", "健スポ").replace("（実習）", "実習")
         .replace("科目", "").replace("基礎セミナー", "基セミ").replace("曜日 ", "").replace("時限", "限").replace("集中 その他 その他", "")
+        .replace("○", "")
+
     },
     bgWarning: function(code) {
       return store.favouriteLecturesCode.indexOf(code) ? "" : "bg-warning"
