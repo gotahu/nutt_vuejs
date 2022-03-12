@@ -66,8 +66,7 @@
       </div>
     </div>
     <div class="text-start mt-2">
-      <span>C13，C14，C15，C23，C25，C33，C35，S10，S11，S20，S21，S30，S1X，S2X，S2Y，サブラボA，CALL1-4 は常時開設されており，授業で使用していない時間帯に使用可能です。</span>
-      <span>上記以外の講義室は，その日最終の授業が終わるまでは開錠されています。</span>
+      <span>現在教室はすべて施錠されています。</span>
     </div>
   </div>
 </template>

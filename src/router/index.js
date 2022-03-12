@@ -5,6 +5,7 @@ import Top from '@/pages/Top'
 import Syllabus from '@/pages/Syllabus'
 import Institution from '@/pages/Institution'
 import Contact from '@/pages/Contact'
+import Humanities from '@/pages/Humanities'
 
 Vue.use(Router)
 
@@ -37,6 +38,12 @@ export default new Router({
             name: 'contact',
             component: Contact,
             meta: { title: 'Contact' }
+        },
+        {
+            path: '/humanities',
+            name: 'humanities',
+            component: Humanities,
+            meta: { title: 'Humanities'}
         }
 
     ]
