@@ -1,6 +1,7 @@
 <template>
   <div>
     <p class="d-sm-none text-white bg-dark text-center p-1 mb-0">スマートフォンでは表示が崩れる場合があります．ご了承ください．</p>
+    <p class="text-white fw-bold bg-danger text-center p-1">以下は2021年度秋学期シラバスです．2022年度春学期シラバスは 3/15 に更新予定です．</p>
 
     <Search @changeOnSearch="receiveSearchData" />
 

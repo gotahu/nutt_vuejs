@@ -1,6 +1,6 @@
 <template>
   <div class="text-center text-white">
-    <p class="bg-info p-1 bg-opacity-75">授業形態で NUCT 参照となっているものや，その他情報に誤りがある場合は，右上の【問い合わせ】から教えていただけると助かります．</p>
+    <p class="bg-info p-1 bg-opacity-75">情報に誤りがある場合は，右上の【問い合わせ】から教えていただけると助かります．</p>
   </div>
 </template>
 

@@ -35,6 +35,7 @@ export default {
       index_to_jp: {
         code: "時間割コード",
         subject: "科目区分",
+        major: '専攻',
         title_jp: "科目名",
         theme: "テーマ（基礎セミナー）",
         teacher_jp: "担当教員",
@@ -58,7 +59,9 @@ export default {
         message: "メッセージ",
         room: "教室",
         message_type: "開講形態について",
-        time_shorten: "開講時間(略)"
+        time_shorten: "開講時間(略)",
+        teachers_license_year: "教職（対象学年）",
+        teachers_license_subject: "教職（科目）"
       },
       isRegistered: false
     }
