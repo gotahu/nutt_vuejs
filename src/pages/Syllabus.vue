@@ -1,7 +1,6 @@
 <template>
   <div>
     <p class="d-sm-none text-white bg-dark text-center p-1 mb-0">スマートフォンでは表示が崩れる場合があります．ご了承ください．</p>
-    <p class="text-white fw-bold bg-danger text-center p-1">以下は2021年度秋学期シラバスです．2022年度春学期シラバスは 3/15 に更新予定です．</p>
 
     <Search @changeOnSearch="receiveSearchData" />
 
@@ -64,6 +63,8 @@ export default {
       department: '',
       subject: '',
       sort: 'asc',
+      semesters: [],
+      types: [],
       favouriteLecturesCode: store.favouriteLecturesCode
     }
   },
@@ -103,6 +104,7 @@ export default {
       this.keyword = array[0]
       this.department = array[1]
       this.subject = array[2]
+      this.semesters = array[3]
     },
     abbrName: function(name) {
       return name.replace("健康・スポーツ科学", "健スポ").replace("（実習）", "実習")
@@ -119,6 +121,7 @@ export default {
                 || item.teacher_jp.indexOf(this.keyword) > -1 || item.subject.indexOf(this.keyword) > -1)
             && (item.departments[this.department] === "○" || this.department === 20)
             && (this.subject === "全科目" || item.subject === this.subject)
+            && this.semesters.includes(item.semester)
       }, this)
     },
     sortedList: function() {

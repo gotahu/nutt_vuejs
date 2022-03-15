@@ -16,11 +16,11 @@
               施設情報
             </router-link>
           </li>
-          <li class="nav-item">
-            <router-link to="/humanities" class="nav-link text-white">
-              文学部
-            </router-link>
-          </li>
+<!--          <li class="nav-item">-->
+<!--            <router-link to="/humanities" class="nav-link text-white">-->
+<!--              文学部-->
+<!--            </router-link>-->
+<!--          </li>-->
           <li class="nav-item">
             <router-link to="/contact" class="nav-link text-white">
               問い合わせ

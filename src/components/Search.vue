@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid p-3 p-md-5">
+  <div class="container-fluid p-3 p-md-5 pb-md-2">
     <div class="row mb-3">
         <label class="col-sm-2 col-form-label text-center">キーワード</label>
         <div class="col-sm-10">
@@ -16,12 +16,22 @@
         </div>
       </div>
     </div>
+    <div class="row mb-3">
+      <label class="col-sm-2 col-form-label align-self-center text-center">学期</label>
+      <div class="col-sm-10 align-self-center">
+        <div v-for="(sem, i) in semestersInfo" class="form-check form-check-inline" :key="i">
+          <input type="checkbox" class="form-check-input" :id="'sem' + i" :value="sem" v-model="semesters" @change="sendSearchData">
+          <label :for="'sem' + i" class="form-check-label">{{ sem }}</label>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <label class="col-sm-2 col-form-label text-center">科目区分</label>
       <div class="col-sm-10">
         <select class="form-select" id="inputGroupSelect" v-model="subject" @change="sendSearchData">
-          <option v-for="(sub, i) in subjectsInfo" :key="i" :value="sub">{{ sub }}</option>
+          <option v-for="(sub, i) in subjectsInfo" :key="i" :value="sub[0]">{{ sub[1] }}</option>
         </select>
+        <p>★印は，2021年度以前入学者用の，旧シラバスに対応しています．</p>
       </div>
     </div>
   </div>
@@ -40,17 +50,39 @@ export default {
       ],
       subject: '全科目',
       subjectsInfo: [
-          "全科目", "基礎セミナー", "文系基礎科目", "理系基礎科目", "言語文化", "文系教養科目",
-          "理系教養科目", "開放科目", "健康・スポーツ科学（実習）", "全学教養科目"
+          ["全科目", "全科目"],
+          ["基礎セミナー", "基礎セミナー"],
+          ["言語文化科目", "言語文化"],
+          ["「大学での学び」基礎論", "「大学での学び」基礎論"],
+          ["現代教養科目", "現代教養科目"],
+          ["国際理解科目", "国際理解科目"],
+          ["自然系基礎科目", "自然系基礎科目"],
+          ["人文・社会系基礎科目", "人文・社会系基礎科目"],
+          ["健康・スポーツ科学科目", "健スポ・実習"],
+          ["言語文化", "★言語文化"],
+          ["文系基礎科目", "★文系基礎科目"],
+          ["理系基礎科目", "★理系基礎科目"],
+          ["文系教養科目", "★文系教養科目"],
+          ["理系教養科目", "★理系教養科目"],
+          ["健康・スポーツ科学（講義）", "★健スポ・講義"],
+          ["全学教養科目", "★全学教養科目"]
+      ],
+      semesters: ["I", "III"],
+      semestersInfo: [
+          "I", "II", "III", "IV", "春", "秋", "その他"
+      ],
+      types: [],
+      typesInfo: [
+          "対面", "対面+遠隔", "遠隔+対面", "遠隔", "NUCT参照", "その他"
       ]
     }
   },
   created() { // 子コンポーネントから親コンポーネントへのデータはイベント発火して渡すらしい
-    this.$emit('changeOnSearch', [this.keyword, this.department, this.subject])
+    this.$emit('changeOnSearch', [this.keyword, this.department, this.subject, this.semesters, this.types])
   },
   methods: {
     sendSearchData() {
-      this.$emit('changeOnSearch', [this.keyword, this.department, this.subject])
+      this.$emit('changeOnSearch', [this.keyword, this.department, this.subject, this.semesters, this.types])
     }
   }
 }

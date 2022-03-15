@@ -27,19 +27,19 @@ export default {
     if (type === "遠隔授業") {
       this.colorClass += "bg-primary"
       this.label = "遠隔"
-    } else if (type === "遠隔授業（一部を対面授業）") {
+    } else if (type === "原則遠隔、一部の授業回を対面") {
       this.colorClass += "bg-info text-dark bg-opacity-75"
       this.label = "遠隔+対面"
-    } else if (type === "対面授業（一部を遠隔授業）") {
+    } else if (type === "原則対面、一部の授業回を遠隔") {
       this.colorClass += "bg-warning text-dark"
       this.label = "対面+遠隔"
     } else if (type === "対面授業") {
       this.colorClass += "bg-danger"
       this.label = "対面"
-    } else if (type === "NUCTを参照") {
+    } else if (type === "NUCT参照") {
       this.colorClass += "bg-success"
       this.label = "NUCT参照"
-    } else if (type === "対面授業（同時に遠隔授業として配信）") {
+    } else if (type === "対面授業、同時に一部の学生向けに遠隔授業（ハイフレックス型）") {
       this.colorClass += "bg-warning text-dark bg-opacity-50"
       this.label = "対面+配信"
     } else {
