@@ -1,11 +1,11 @@
 <template>
   <div>
-    <p class="d-sm-none text-white bg-dark text-center p-1 mb-0">スマートフォンでは表示が崩れる場合があります．ご了承ください．</p>
-
     <Search @changeOnSearch="receiveSearchData" />
 
     <div class="container-fluid">
       <p class="text-black-50 text-center">講義をクリックまたはタップすると，シラバスを閲覧できます．</p>
+
+
 
       {{ /* タイトル行 */ }}
       <div class="row bg-success text-white align-items-center text-md-center py-2">
@@ -75,7 +75,7 @@ export default {
   },
   created() {
     this.axios
-        .get('https://hinyari.net/other/nutt/api/syllabus.php?')
+        .get('https://hinyari.net/other/nutt/api/syllabus.php?faculty=00')
         .then(response => (this.lectures = response.data))
   },
   methods: {

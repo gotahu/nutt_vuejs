@@ -61,7 +61,8 @@ export default {
         message_type: "開講形態について",
         time_shorten: "開講時間(略)",
         teachers_license_year: "教職（対象学年）",
-        teachers_license_subject: "教職（科目）"
+        teachers_license_subject: "教職（科目）",
+        year: "対象学年"
       },
       isRegistered: false
     }

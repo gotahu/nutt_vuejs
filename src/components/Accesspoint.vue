@@ -9,11 +9,11 @@
     <div id="usage-accesspoint" class="mb-2">
       <div class="row gx-0">
         <div class="col border border-secondary">空室</div>
-        <div class="col bg-black bg-opacity-50">施錠</div>
+        <div class="col bg-black bg-opacity-75 text-white">施錠</div>
       </div>
       <div class="row gx-0 ">
-        <div class="col bg-danger bg-opacity-50">対面</div>
-        <div class="col bg-warning bg-opacity-50">対面+遠隔</div>
+        <div class="col bg-black bg-opacity-25">対面</div>
+        <div class="col bg-black bg-opacity-25">対面+遠隔</div>
         <div class="col bg-info bg-opacity-50">遠隔+対面</div>
         <div class="col bg-primary bg-opacity-50">遠隔</div>
         <div class="col bg-success bg-opacity-50">NUCT参照</div>
@@ -52,11 +52,13 @@
               <div class="col border-bottom border-end" v-for="period in [1,2,3,4,5]" :key="period">
                 <template v-if="accesspoints[room] !== undefined">
                   <template v-if="accesspoints[room][apDayOfWeek + period] !== undefined">
-                    <div :class="getColorOfType(accesspoints[room][apDayOfWeek + period].type)" class="bg-opacity-25 text-white text-opacity-25">-</div>
+                    <div :class="getStatusOfType(accesspoints[room][apDayOfWeek + period].type)[0]" class="text-black text-opacity-50">
+                      {{ getStatusOfType(accesspoints[room][apDayOfWeek + period].type)[1] }}
+                    </div>
                   </template>
                   <template v-else>
-                    <span v-if="accesspoints[room]['lastperiods'][apDayOfWeek] > period" class="text-black-50">空</span>
-                    <div v-else class="bg-black bg-opacity-50"><span class="small text-black text-opacity-50">×</span></div>
+                    <div v-if="accesspoints[room]['lastperiods'][apDayOfWeek] > period" class="text-black-50 bg-primary bg-opacity-25 ">空</div>
+                    <div v-else class="bg-black bg-opacity-75"><span class="small text-white text-opacity-50">×</span></div>
                   </template>
                 </template>
               </div>
@@ -111,22 +113,30 @@ export default {
     setAPDayOfWeek: function(dayOfWeek) {
       this.apDayOfWeek = dayOfWeek
     },
-    getColorOfType(type) {
+    getStatusOfType(type) {
       let colorClass = "";
+      let status = "";
+
       if (type === "遠隔授業") {
-        colorClass += "bg-primary"
-      } else if (type === "遠隔授業（一部を対面授業）") {
-        colorClass += "bg-info"
-      } else if (type === "対面授業（一部を遠隔授業）") {
-        colorClass += "bg-warning"
+        colorClass += "bg-primary bg-opacity-25"
+        status = "○"
+      } else if (type === "原則遠隔、一部の授業回を対面") {
+        colorClass += "bg-info bg-opacity-25"
+        status = "△"
+      } else if (type === "原則対面、一部の授業回を遠隔") {
+        colorClass += "bg-black bg-opacity-25"
+        status = "×"
       } else if (type === "対面授業") {
-        colorClass += "bg-danger"
-      } else if (type === "NUCTを参照") {
-        colorClass += "bg-success"
-      } else if (type === "対面授業（同時に遠隔授業として配信）") {
-        colorClass += "bg-warning"
+        colorClass += "bg-black bg-opacity-25"
+        status = "×"
+      } else if (type === "NUCT参照") {
+        colorClass += "bg-success bg-opacity-25"
+        status = "?"
+      } else if (type === "対面授業、同時に一部の学生向けに遠隔授業（ハイフレックス型）") {
+        colorClass += "bg-black bg-opacity-25"
+        status = "×"
       }
-      return colorClass
+      return [colorClass, status]
     }
   }
 }
