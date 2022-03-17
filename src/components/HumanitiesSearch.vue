@@ -25,6 +25,14 @@
         </div>
       </div>
     </div>
+    <div class="row mb-3">
+      <label class="col-sm-2 col-form-label align-self-center text-center">教職</label>
+      <div class="col-sm-10">
+        <select class="form-select" id="teachersLicenseSubjectsSelect" v-model="teachersLicenseSubject" @change="sendSearchData">
+          <option v-for="(subject, i) in teachersLicenseSubjectsInfo" :key="i" :value="subject">{{ subject }}</option>
+        </select>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -49,14 +57,26 @@ export default {
       semestersInfo: [
         "春", "春1期", "春2期", "秋", "秋1期", "秋2期", "春集中", "秋集中", "集中", "通年", "通年集中"
       ],
+      teachersLicenseSubject: "",
+      teachersLicenseSubjectsInfo: [
+          "",
+          "中高一種・英語",
+          "中一種・国語",
+          "高一種・国語",
+          "中高一種・独語",
+          "中高一種・仏語",
+          "中一種・社会",
+          "高一種・公民",
+          "高一種・地歴",
+      ]
     }
   },
   created() { // 子コンポーネントから親コンポーネントへのデータはイベント発火して渡すらしい
-    this.$emit('changeOnSearch', [this.keyword, this.major, this.subject, this.semesters])
+    this.$emit('changeOnSearch', [this.keyword, this.major, this.subject, this.semesters, this.teachersLicenseSubject])
   },
   methods: {
     sendSearchData() {
-      this.$emit('changeOnSearch', [this.keyword, this.major, this.subject, this.semesters])
+      this.$emit('changeOnSearch', [this.keyword, this.major, this.subject, this.semesters, this.teachersLicenseSubject])
     }
   }
 }

@@ -54,7 +54,7 @@ export default {
       major: '',
       subject: '',
       semesters: [],
-      sort: 'asc',
+      teachersLicenseSubject: "",
       favouriteLecturesCode: store.favouriteLecturesCode
     }
   },
@@ -76,6 +76,7 @@ export default {
       this.major = array[1]
       this.subject = array[2]
       this.semesters = array[3]
+      this.teachersLicenseSubject = array[4]
     },
     bgWarning: function(code) {
       return store.favouriteLecturesCode.indexOf(code) ? "" : "bg-warning"
@@ -88,6 +89,8 @@ export default {
                 || item.teacher_jp.indexOf(this.keyword) > -1)
             && (item.major.indexOf(this.major) > -1 || this.major === "全専攻")
             && this.semesters.includes(item.semester)
+            && ((item.teachers_license_subject != null && item.teachers_license_subject.indexOf(this.teachersLicenseSubject) > -1)
+                || this.teachersLicenseSubject === "")
       }, this)
     },
   },

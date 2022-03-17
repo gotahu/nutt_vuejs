@@ -1,7 +1,8 @@
 <template>
   <div class="px-5 pt-3 pb-2">
     <nav class="nav nav-pills nav-fill">
-      <button v-for="(fac, index) in faculties" class="nav-link link-success"
+      <button v-for="(fac, index) in faculties"
+              class="nav-link link-success border border-success rounded mx-1"
               :key="'faculty-' + index"
               :class="faculty === fac[0] ? 'active bg-success' : ''"
               @click="setFaculty(fac[0])">{{ fac[1] }}</button>
