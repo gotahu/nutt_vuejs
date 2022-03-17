@@ -3,7 +3,7 @@
     <HumanitiesSearch @changeOnSearch="receiveSearchData" />
 
     <div class="container-fluid">
-      <p class="text-black-50 text-center">講義をクリックまたはタップすると，シラバスを閲覧<span class="fw-bold">できません</span>．もうちょっとまってください</p>
+      <p class="text-black-50 text-center">講義をクリックまたはタップすると，シラバスを閲覧できます．</p>
 
       {{ /* タイトル行 */ }}
       <div class="row bg-success text-white align-items-center text-center py-2">
@@ -13,12 +13,12 @@
         <div class="col-2 col-md-1 p-0">時限</div>
         <div class="d-none d-md-block col-md-1 p-0">単位</div>
         <div class="col-2 col-md-1">学年</div>
-        <div class="col col-md-2">講師名</div>
+        <div class="col col-md">講師名</div>
       </div>
 
       {{ /* リスト部分 */ }}
       <div class="list-group list-group-flush">
-        <template v-for="lecture in sortedList">
+        <template v-for="lecture in filteredList">
           <a class="list-group-item list-group-item-action p-1 p-md-2" :key="lecture.code"
              @click="openSyllabusModal(lecture.code)"
              data-bs-toggle="modal" data-bs-target="#syllabusModal"
@@ -27,24 +27,20 @@
             <div class="row align-items-center gx-1 gx-lg-3">
               <div class="d-none d-md-block col-md-1">{{ lecture.code }}</div>
               <div class="d-none d-md-block col-md-1 small p-0">{{ lecture.major }}</div>
-              <div class="col col-md-3">{{ abbrName(lecture.title_jp) }}</div>
-              <div class="col-2 col-md-1 p-0"><p class="m-0" v-for="t in lecture.time" :key="t">{{t}}</p></div>
+              <div class="col col-md-3">{{ lecture.title_jp }}</div>
+              <div class="col-2 col-md-1 p-0"><p class="m-0" v-for="t in lecture.time" :key="t">{{ lecture.semester }} {{t}}</p></div>
               <div class="d-none d-md-block col-md-1 small p-0">{{ lecture.credit }} 単位</div>
-              <div class="col-2 text-center text-md-start col-md-1">{{ abbrName(lecture.year) }}</div>
-              <div class="col col-md-2">{{ abbrName(lecture.teacher_jp) }}</div>
+              <div class="col-2 text-center text-md-start col-md-1">{{ lecture.year }}</div>
+              <div class="col col-md">{{ lecture.teacher_jp }}</div>
             </div>
           </a>
         </template>
       </div>
     </div>
-
-    <Modal :code="this.code"/>
-  </div>
+      </div>
 </template>
 
 <script>
-import Modal from "@/components/Modal";
-
 import store from "@/store"
 import HumanitiesSearch from "@/components/HumanitiesSearch";
 
@@ -57,13 +53,13 @@ export default {
       keyword: '',
       major: '',
       subject: '',
+      semesters: [],
       sort: 'asc',
       favouriteLecturesCode: store.favouriteLecturesCode
     }
   },
   components: {
-    HumanitiesSearch,
-    Modal
+    HumanitiesSearch
   },
   created() {
     this.axios
@@ -71,60 +67,28 @@ export default {
         .then(response => (this.lectures = response.data))
   },
   methods: {
-    comparatorAsc: function(itemA, itemB) {
-      if (itemA.code < itemB.code) {
-        return -1
-      } else if (itemA.code > itemB.code) {
-        return 1
-      } else {
-        return 0
-      }
-    },
-    comparatorDesc: function(itemA, itemB) {
-      if (itemA.code < itemB.code) {
-        return 1
-      } else if (itemA.code > itemB.code) {
-        return -1
-      } else {
-        return 0
-      }
-    },
     openSyllabusModal: function(code) {
       this.code = code
+      this.$emit('changeOnModalCode', this.code)
     },
     receiveSearchData (array) {
       this.keyword = array[0]
       this.major = array[1]
       this.subject = array[2]
-    },
-    abbrName: function(name) {
-      return name.replace("健康・スポーツ科学", "健スポ").replace("（実習）", "実習")
-        .replace("科目", "").replace("基礎セミナー", "基セミ").replace("曜日 ", "").replace("時限", "限").replace("集中 その他 その他", "")
-        .replace("○", "").replace("年生以上", "年↑")
-
+      this.semesters = array[3]
     },
     bgWarning: function(code) {
       return store.favouriteLecturesCode.indexOf(code) ? "" : "bg-warning"
-    }
+    },
   },
   computed: {
     filteredList: function() {
       return this.lectures.filter(item => {
         return (item.title_jp.indexOf(this.keyword) > -1 || item.code.indexOf(this.keyword) > -1
                 || item.teacher_jp.indexOf(this.keyword) > -1)
-            && (item.major === this.major || this.major === "全専攻")
+            && (item.major.indexOf(this.major) > -1 || this.major === "全専攻")
+            && this.semesters.includes(item.semester)
       }, this)
-    },
-    sortedList: function() {
-      const copy = this.filteredList.slice();
-
-      if (this.sort === 'asc') {
-        return copy.sort(this.comparatorAsc)
-      } else if (this.sort === 'desc') {
-        return copy.sort(this.comparatorDesc)
-      } else {
-        return copy
-      }
     },
   },
 

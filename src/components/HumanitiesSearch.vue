@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid p-3 p-md-5 pb-md-1 pt-md-4">
+  <div class="container-fluid p-3 p-md-5 pb-md-3 pt-md-4">
     <div class="row mb-3">
         <label class="col-sm-2 col-form-label text-center">キーワード</label>
         <div class="col-sm-10">
@@ -16,12 +16,13 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <label class="col-sm-2 col-form-label text-center">科目区分</label>
-      <div class="col-sm-10">
-        <select class="form-select" id="inputGroupSelect" v-model="subject" @change="sendSearchData">
-          <option v-for="(sub, i) in subjectsInfo" :key="i" :value="sub">{{ sub }}</option>
-        </select>
+    <div class="row mb-3">
+      <label class="col-sm-2 col-form-label align-self-center text-center">学期</label>
+      <div class="col-sm-10 align-self-center">
+        <div v-for="(sem, i) in semestersInfo" class="form-check form-check-inline" :key="i">
+          <input type="checkbox" class="form-check-input" :id="'sem' + i" :value="sem" v-model="semesters" @change="sendSearchData">
+          <label :for="'sem' + i" class="form-check-label">{{ sem }}</label>
+        </div>
       </div>
     </div>
   </div>
@@ -38,20 +39,24 @@ export default {
         "全専攻", "言語学", "日本語学", "日本文学", "英語学", "英米文学", "中国語中国文学",
           "ドイツ語ドイツ文学", "フランス語フランス文学", "哲学", "西洋古典学", "中国哲学",
           "インド哲学", "日本史学", "東洋史学", "西洋史学", "美学美術史学", "考古学",
-          "文化人類学", "社会学", "心理学", "地理学"
+          "文化人類学", "社会学", "心理学", "地理学", "基礎選択科目", "共通選択科目"
       ],
       subject: '全科目',
       subjectsInfo: [
           "全科目", "基礎基盤科目", "基礎選択科目", "学部共通実践科目", "共通選択科目"
-      ]
+      ],
+      semesters: ["春", "春1期", "春2期", "春集中"],
+      semestersInfo: [
+        "春", "春1期", "春2期", "秋", "秋1期", "秋2期", "春集中", "秋集中", "集中", "通年", "通年集中"
+      ],
     }
   },
   created() { // 子コンポーネントから親コンポーネントへのデータはイベント発火して渡すらしい
-    this.$emit('changeOnSearch', [this.keyword, this.major, this.subject])
+    this.$emit('changeOnSearch', [this.keyword, this.major, this.subject, this.semesters])
   },
   methods: {
     sendSearchData() {
-      this.$emit('changeOnSearch', [this.keyword, this.major, this.subject])
+      this.$emit('changeOnSearch', [this.keyword, this.major, this.subject, this.semesters])
     }
   }
 }
