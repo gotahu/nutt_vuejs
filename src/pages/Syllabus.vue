@@ -4,9 +4,9 @@
 
     <div class="container-fluid">
       <p class="text-black-50 text-center">講義をクリックまたはタップすると，シラバスを閲覧できます．</p>
-
-
-
+      <p class="bg-warning text-black p-1 bg-opacity-50 text-center">
+        コードが<span class="fw-bold text-danger"> 赤字 </span>のものは，仮コードです．履修登録はこのコードを用いて行います
+      </p>
       {{ /* タイトル行 */ }}
       <div class="row bg-success text-white align-items-center text-md-center py-2">
         <div class="d-none d-md-block col-md-1">コード</div>
@@ -28,7 +28,10 @@
              data-bs-toggle="modal" data-bs-target="#syllabusModal"
              :class="favouriteLecturesCode.includes(lecture.code) ? 'bg-warning bg-opacity-25' : ''">
             <div class="row align-items-center gx-1 gx-lg-3">
-              <div class="d-none d-md-block col-md-1">{{ lecture.code }}</div>
+              <div class="d-none d-md-block col-md-1">
+                <span v-if="lecture.provisional_code == null || lecture.provisional_code === ''">{{ lecture.code }}</span>
+                <span v-else class="text-danger fw-bold">{{ lecture.provisional_code }}</span>
+              </div>
               <div class="d-none d-md-block col-md-1 small p-0">{{ lecture.subject }}</div>
               <div class="col-10 col-md-3">{{ lecture.title_jp }}</div>
               <div class="col-2 col-md-1 p-0"><p class="m-0" v-for="t in lecture.time" :key="t">{{t}}</p></div>

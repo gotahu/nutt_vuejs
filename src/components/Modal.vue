@@ -8,6 +8,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
         </div>
         <div class="modal-body">
+          <div class="d-block">
+            <a class="btn btn-success float-end" :href="syllabus_url" role="button"
+                target="_blank" rel="noopener noreferrer">詳細なシラバスをみる</a>
+            ※予め<a href="https://app4.srv.nagoya-u.ac.jp/camweb/top.do?CAS=1">サイト</a>にログインしておく必要があります
+          </div>
           <div class="form-check">
             <input type="checkbox" id="favouriteCheck" class="form-check-input" v-model="isRegistered" @change="onFavouriteChange">
             <label class="form-check-label" for="favouriteCheck">お気に入りに登録</label>
@@ -32,6 +37,7 @@ export default {
   data() {
     return {
       syllabus: [],
+      syllabus_url: "",
       index_to_jp: {
         code: "時間割コード",
         subject: "科目区分",
@@ -77,6 +83,8 @@ export default {
 
       // お気に入り登録されているかを取得
       this.isRegistered = store.favouriteLecturesCode.includes(code)
+      this.syllabus_url = "https://app4.srv.nagoya-u.ac.jp/camweb/slbssbdr.do?value(risyunen)=2022&value(semekikn)=1&value(kougicd)="
+          + this.code + "&value(crclumcd)=ZZ"
     }
   },
   methods: {

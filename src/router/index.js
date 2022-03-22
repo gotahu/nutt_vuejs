@@ -45,6 +45,5 @@ export default new Router({
             component: Humanities,
             meta: { title: 'Humanities'}
         }
-
     ]
 })
