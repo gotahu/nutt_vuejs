@@ -1,0 +1,2 @@
+export const CHANGE_MODAL_CODE = "CHANGE_MODAL_CODE"
+export const CHANGE_SEARCH = "CHANGE_SEARCH"

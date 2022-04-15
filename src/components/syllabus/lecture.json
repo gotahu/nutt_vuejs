@@ -1,0 +1,42 @@
+{
+	"code": "0011101",
+	"subject": "言語文化科目",
+	"title_jp": "日本語文章表現法",
+	"theme": "",
+	"teacher_jp": "佐藤　弘毅",
+	"credit": "2",
+	"time": [
+		"月1"
+	],
+	"room": "C10",
+	"semester": "I",
+	"weekdate": "1",
+	"period": "1",
+	"departments": [
+		"",
+		"",
+		"○",
+		"",
+		"○",
+		"",
+		"○",
+		"",
+		"",
+		"",
+		"○",
+		"○",
+		"○",
+		"○",
+		"○",
+		"○",
+		"○",
+		"",
+		"",
+		""
+	],
+	"type": "遠隔授業",
+	"major": "",
+	"year": "",
+	"teachers_license_subject": "",
+	"provisional_code": ""
+}
