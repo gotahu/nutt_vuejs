@@ -1,4 +1,4 @@
-# nutt_vuejs
+# nutt_vue3
 
 ## Project setup
 ```
